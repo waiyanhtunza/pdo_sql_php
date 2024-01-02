@@ -4,7 +4,7 @@
 
 require "../Database.php";
 
-$password = $_POST["fpassword"];
+$password = $_POST["password"];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 $db = new Database('localhost', 'auth','3306', 'root', '');
@@ -15,11 +15,11 @@ $result = $db->query('INSERT INTO `users` (`fname`, `sname`, `email`, `password`
     ':email'=> $_POST['email'],
     ':password'=> $hashed_password,
 ]); 
-$data = $db->query('SELECT * FROM users')->getAll();
-
-
-dd($data);
-
 require "../view/register.php"; 
+
+
+
+
+
 
 
